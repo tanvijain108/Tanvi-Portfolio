@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tanvijain108.github.io/Tanvi-Portfolio/sitemap.xml
