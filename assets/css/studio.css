@@ -12,7 +12,7 @@
   --gutter: clamp(20px, 6.5vw, 128px);
   --page-top: clamp(120px, 18vh, 180px);
   --font: 'Archivo', Arial, Helvetica, sans-serif;
-  --mono: 'Geist Mono', 'Courier New', monospace;
+  --mono: var(--font);
   --ease: cubic-bezier(.22,.72,.2,1);
 }
 * { box-sizing: border-box; }
@@ -223,6 +223,7 @@ body.studio-site { margin: 0; background: var(--bg); color: var(--text); font-fa
 .studio-site .services-intro .hero-detail { margin: 0 0 6px; max-width: 340px; }
 .studio-site .services-page .service-list { margin-bottom: 110px; }
 .studio-site .process-section { padding-block: 65px 110px; border-top: 1px solid var(--line); }
+.studio-site .deliverables-section + .process-section { border-top: 0; }
 .studio-site .process-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 40px; }
 .studio-site .process-card { display: flex; flex-direction: column; align-items: start; min-height: 290px; padding: 30px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
 .studio-site .process-card > span { margin-bottom: 45px; font: 12px var(--mono); color: var(--accent); }
@@ -916,6 +917,9 @@ body.studio-site { margin: 0; background: var(--bg); color: var(--text); font-fa
 :root { --radius: 22px; --radius-sm: 14px; }
 .studio-site :is(.service-card, .engagement-card, .process-card, .certification-card, .project-card, .featured-preview, .preview-slide, .row-preview, .certification-preview) { border-radius: var(--radius); overflow: hidden; }
 .studio-site :is(.project-cover, .project-card-art, .about-portrait, .about-portrait-wrap, .preview-stack) { border-radius: var(--radius); overflow: hidden; }
+.studio-site .project-card { border-radius: 0; overflow: visible; }
+.studio-site .related-work .project-card-art { aspect-ratio: 16 / 9; }
+.studio-site .project-card-meta p { font-size: 14px; line-height: 1.6; color: var(--muted); }
 .studio-site :is(.project-card, .service-card, .about-portrait) img { border-radius: inherit; }
 .studio-site :is(.field input, .field select, .field textarea) { border-radius: var(--radius-sm); }
 .studio-site :is(.service-tags li, .service-card-tags span, .project-card-status, .project-card-type) { border-radius: 999px; }
@@ -930,9 +934,9 @@ body.studio-site { margin: 0; background: var(--bg); color: var(--text); font-fa
 @media (max-width: 700px) { .studio-site .about-teaser, .studio-site .certifications { padding-inline: 20px; } }
 /* A focused services page: clear offerings and a compact, grouped toolkit. */
 .studio-site .simple-services-hero { padding-top: var(--page-top); padding-bottom: clamp(40px, 6vw, 85px); }
-.studio-site .simple-services-hero h1 { margin-top: 30px; max-width: 1100px; font-size: clamp(42px, 6.5vw, 100px); line-height: 1.06; letter-spacing: -.055em; }
+.studio-site .simple-services-hero h1 { margin-top: 30px; max-width: none; width: 100%; font-size: clamp(42px, 6.5vw, 100px); line-height: 1.06; letter-spacing: -.055em; }
 .studio-site .simple-services-hero em { color: var(--accent); font-variation-settings: 'wdth' 105, 'wght' 300; }
-.studio-site .simple-services-hero > p:last-child { max-width: 540px; margin-top: 26px; color: var(--muted); font-size: 17px; line-height: 1.7; }
+.studio-site .simple-services-hero > p:last-child { max-width: none; margin-top: 26px; color: var(--muted); font-size: 17px; line-height: 1.7; }
 .studio-site .simple-services { padding-block: 0 75px; }
 .studio-site .simple-service { display: grid; grid-template-columns: 38px minmax(0, 1fr) minmax(0, 1.1fr) 30px; align-items: start; gap: 32px; padding: 34px 0; border-top: 1px solid var(--line); }
 .studio-site .simple-service:last-child { border-bottom: 1px solid var(--line); }
@@ -989,6 +993,8 @@ body.studio-site { margin: 0; background: var(--bg); color: var(--text); font-fa
 .studio-site .story-block h2 { font-size: clamp(30px, 3.2vw, 46px); }
 .studio-site .studio-marquee { border: 0; border-radius: 0; padding-inline: 0; }
 
+.studio-site .hero-availability::before, .studio-site .hero-availability > i { display: none; }
+
 /* Quiet service list: one clear offering per row. */
 .studio-site .services-board.services-board { display: block; border-top: 1px solid var(--line); }
 .studio-site .services-board.services-board .service-card:nth-child(n) { display: block; min-height: 0; padding: 30px 64px 30px 56px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent !important; box-shadow: none; transform: none; transition: padding .25s ease; }
@@ -1017,5 +1023,3 @@ body.studio-site { margin: 0; background: var(--bg); color: var(--text); font-fa
  .studio-site .services-board.services-board .service-card { transition: none; }
  .studio-site .services-board.services-board .service-card:is(:hover, :focus-visible) .service-card-arrow { transform: none; }
 }
-
-.studio-site .hero-availability::before, .studio-site .hero-availability > i { display: none; }
