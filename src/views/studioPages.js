@@ -3,7 +3,7 @@ import { layout } from './layout.js';
 import { projectArt } from './studioParts.js';
 import { STUDIO_SERVICES } from '../studioServices.js';
 import { TOPICS } from '../content.js';
-import { toolLogo, serviceToolChips } from './toolkit.js';
+import { serviceToolChips } from './toolkit.js';
 import { PROFILE } from '../portfolioProfile.js';
 
 const PROCESS = PROFILE.process;
@@ -34,7 +34,6 @@ export function aboutPage({ site, siteUrl }) {
     <div class="about-portrait-wrap"><figure class="about-portrait about-portrait-real" data-reveal data-tilt><img class="about-portrait-image" src="${PROFILE.portrait}" alt="Illustrated portrait of Tanvi Jain" width="632" height="767" decoding="async" fetchpriority="high"/></figure></div>
     <div class="story-copy"><p class="about-lead" data-reveal>${PROFILE.aboutParagraphs[0]}</p>
       <div class="about-body" data-reveal>${PROFILE.aboutParagraphs.slice(1).map((paragraph) => html`<p>${paragraph}</p>`)}</div>
-      <section class="toolkit"><h2 class="section-label" data-reveal>Toolkit</h2><ul class="tool-list imported-tool-list" data-reveal>${PROFILE.toolkit.map((tool) => html`<li>${toolLogo(tool)}<div><span>${tool}</span><small>${PROFILE.toolkitDescriptions[tool]}</small></div></li>`)}</ul></section>
       <div class="about-links" data-reveal><a class="outline-button" href="${PROFILE.resumeUrl}" target="_blank" rel="noopener">View résumé <span aria-hidden="true">${arrowIcon()}</span></a><a class="text-link" href="/contact">Let's work together <span aria-hidden="true">${arrowIcon()}</span></a></div>
     </div>
   </section>
