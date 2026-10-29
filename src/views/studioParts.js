@@ -1,4 +1,4 @@
-import { html } from './html.js';
+import { html, arrowIcon } from './html.js';
 import { isSafeImageSource } from '../validate.js';
 
 export function projectArt(project, { detail = false } = {}) {
@@ -12,5 +12,5 @@ export function projectArt(project, { detail = false } = {}) {
 }
 
 export function projectCard(project) {
-  return html`<a class="project-card reveal" href="/work/${project.slug}" data-cursor-label="View"${project.template && html` data-project-template="true"`}><div class="project-card-art">${projectArt(project)}</div><div class="project-card-meta"><h2>${project.title}</h2><span class="mono">${project.year || 'Case study'}</span><p>${project.category}</p><span class="project-card-arrow" aria-hidden="true">↗</span></div></a>`;
+  return html`<a class="project-card reveal" href="/work/${project.slug}" data-cursor-label="View"${project.template && html` data-project-template="true"`}><div class="project-card-art">${projectArt(project)}</div><div class="project-card-meta"><h2>${project.title}</h2><span class="mono">${project.year || 'Case study'}</span><p>${project.category}</p><span class="project-card-arrow" aria-hidden="true">${arrowIcon()}</span></div></a>`;
 }

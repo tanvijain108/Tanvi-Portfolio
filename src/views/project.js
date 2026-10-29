@@ -1,4 +1,4 @@
-﻿import { html, prose } from './html.js';
+﻿import { html, prose, arrowIcon } from './html.js';
 import { layout } from './layout.js';
 import { projectArt } from './studioParts.js';
 import { isSafeImageSource } from '../validate.js';
@@ -58,7 +58,7 @@ function projectBody(sections, projectTitle) {
 
 function actionLink(url, label, secondary = false) {
   if (!url) return null;
-  return html`<a class="${secondary ? 'outline-button' : 'pill-button'}" href="${url}"${/^https?:/i.test(url) && html` target="_blank" rel="noopener"`}>${label} <span aria-hidden="true">↗</span></a>`;
+  return html`<a class="${secondary ? 'outline-button' : 'pill-button'}" href="${url}"${/^https?:/i.test(url) && html` target="_blank" rel="noopener"`}>${label} <span aria-hidden="true">${arrowIcon()}</span></a>`;
 }
 
 export function projectPage({ project: p, next, site, siteUrl }) {
@@ -72,9 +72,9 @@ export function projectPage({ project: p, next, site, siteUrl }) {
     ${hasActions && html`<div class="project-actions" aria-label="Explore this project">${actionLink(p.url, 'View case study')}${actionLink(p.prototypeUrl, 'View prototype', true)}</div>`}
   </section>
   ${cover ? html`<figure class="project-cover-media page-wrap"><img src="${cover}" alt="${p.coverImageAlt || `Cover for ${p.title}`}" decoding="async" fetchpriority="high" /></figure>` : html`<section class="project-cover page-wrap" aria-label="Project visual"><div>${projectArt(p)}</div></section>`}
-  <section class="project-story project-story--content page-wrap">${p.template ? html`<article class="story-block" data-reveal><h2>This story is still taking shape.</h2><div class="prose"><p>This is a space for a future UI / UX case study. The project overview, research, design process and outcomes will be added when the work is ready to share.</p><p>The visuals are layout placeholders. There are no project results or client claims here yet.</p><a class="text-link" href="/work">Explore all five spaces <span aria-hidden="true">↗</span></a></div></article>` : projectBody(sections, p.title)}
+  <section class="project-story project-story--content page-wrap">${p.template ? html`<article class="story-block" data-reveal><h2>This story is still taking shape.</h2><div class="prose"><p>This is a space for a future UI / UX case study. The project overview, research, design process and outcomes will be added when the work is ready to share.</p><p>The visuals are layout placeholders. There are no project results or client claims here yet.</p><a class="text-link" href="/work">Explore all five spaces <span aria-hidden="true">${arrowIcon()}</span></a></div></article>` : projectBody(sections, p.title)}
     ${!p.template && p.metrics?.length > 0 && html`<div class="project-metrics" aria-label="Results">${p.metrics.map((metric) => html`<div><strong>${metric.value}</strong><p>${metric.label}</p></div>`)}</div>`}
   </section>
-  ${next && html`<section class="next-project page-wrap"><span class="section-label">NEXT CASE STUDY</span><a href="/work/${next.slug}" data-cursor-label="View"><h2>${next.title}</h2><span aria-hidden="true">↗</span></a></section>`}`;
+  ${next && html`<section class="next-project page-wrap"><span class="section-label">NEXT CASE STUDY</span><a href="/work/${next.slug}" data-cursor-label="View"><h2>${next.title}</h2><span aria-hidden="true">${arrowIcon()}</span></a></section>`}`;
   return layout({ title: `${p.title} · Case study by Tanvi`, description: p.summary || `A UI / UX case study by Tanvi.`, path: `/work/${p.slug}`, siteUrl, site, body, ogType: 'article', noindex: !!p.template });
 }

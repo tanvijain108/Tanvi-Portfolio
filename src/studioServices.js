@@ -15,10 +15,11 @@ export const STUDIO_SERVICES = [
       'A design system with reusable components, plus organised design files for developer handoff.',
     ],
     process: [
-      { title: 'Frame', description: 'Agree on the problem, the audience and what a useful outcome looks like.' },
-      { title: 'Structure', description: 'Map the flows and wireframe the key screens before any visual design.' },
-      { title: 'Design', description: 'Build the interface and a prototype, sharing decisions as the details take shape.' },
-      { title: 'Refine', description: 'Review usability, resolve the important states and prepare a clear handoff.' },
+      { title: 'Empathize', description: 'Listen to people and understand their needs, experiences and pain points.' },
+      { title: 'Define', description: 'Bring the research together into a clear, focused problem statement.' },
+      { title: 'Ideate', description: 'Explore possible solutions through sketches, user flows and wireframes.' },
+      { title: 'Prototype', description: 'Build an interactive version of the idea that people can try.' },
+      { title: 'Testing', description: 'Observe people using the prototype, gather feedback and iterate.' },
     ],
     faqs: [
       { question: 'Can we start with an idea rather than a brief?', answer: 'Yes. An early conversation can turn the idea into a practical brief, identify the people it serves and decide which questions to explore first.' },

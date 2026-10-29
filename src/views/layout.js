@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { html, raw, esc } from './html.js';
+import { html, raw, esc, arrowIcon } from './html.js';
 import { PROFILE } from '../portfolioProfile.js';
 
 export const PUBLIC_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..', 'public');
@@ -31,11 +31,13 @@ ${canonical && html`<link rel="canonical" href="${canonical}" /><meta property="
 <meta property="og:type" content="${ogType}" /><meta property="og:title" content="${title}" /><meta property="og:description" content="${description}" /><meta property="og:site_name" content="Tanvi · UI/UX Designer" /><meta name="twitter:card" content="summary" />
 <link rel="icon" href="${asset('favicon.svg')}" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="${asset('assets/css/studio.css')}" />
 <link rel="stylesheet" href="${asset('assets/css/content.css')}" />
 <link rel="stylesheet" href="${asset('assets/css/project-content.css')}" />
 <link rel="stylesheet" href="${asset('assets/css/appearance.css')}" />
+<link rel="stylesheet" href="${asset('assets/css/typography.css')}" />
+<link rel="stylesheet" href="${asset('assets/css/contact.css')}" />
 </head>
 <body class="studio-site">
 <a class="skip-link" href="#main">Skip to content</a><div class="grain-layer" aria-hidden="true"></div>
@@ -51,7 +53,7 @@ ${canonical && html`<link rel="canonical" href="${canonical}" /><meta property="
     <button class="menu-button" id="menuToggle" type="button" aria-controls="siteMenu" aria-expanded="false"><span class="menu-icon" aria-hidden="true"></span><span>Menu</span></button>
   </div>
 </header>
-<div class="site-menu" id="siteMenu" hidden inert><nav class="menu-links" aria-label="All pages">${[['Home', '/'], ...NAV, ['Contact', '/contact']].map(([label, href], index) => html`<a href="${href}"${pagePath === href && html` aria-current="page"`}><span class="mono">0${index + 1}</span>${label}<span aria-hidden="true">↗</span></a>`)}</nav><div class="menu-meta"><a href="mailto:${site.email}">${site.email}</a><span>${site.location}</span></div></div>
+<div class="site-menu" id="siteMenu" hidden inert><nav class="menu-links" aria-label="All pages">${[['Home', '/'], ...NAV, ['Contact', '/contact']].map(([label, href], index) => html`<a href="${href}"${pagePath === href && html` aria-current="page"`}><span class="mono">0${index + 1}</span>${label}<span aria-hidden="true">${arrowIcon()}</span></a>`)}</nav><div class="menu-meta"><a href="mailto:${site.email}">${site.email}</a><span>${site.location}</span></div></div>
 <main class="site-main" id="main">${body}</main>
 <footer class="site-footer" id="contact"><div class="page-wrap"><p class="footer-eyebrow mono">GOT SOMETHING IN MIND?</p><a class="footer-title" href="/contact" data-footer-cta data-cursor-label="Let's go" aria-label="Let's talk about your project"><span class="footer-title-text" data-kinetic-footer>LET'S TALK</span></a><div class="footer-grid"><div class="footer-contact-links"><a href="mailto:${site.email}">${site.email}</a><a href="${PROFILE.phoneHref}">${PROFILE.phone}</a></div><div class="footer-socials">${socials.map(([label, url]) => raw(`<a class="social-icon" href="${url ? esc(url) : '#'}" aria-label="${label}"${url ? ' target="_blank" rel="noopener me"' : ''}>${SOCIAL_ICONS[label]}</a>`))}</div></div><div class="footer-bottom mono"><span>© ${new Date().getFullYear()} Tanvi Jain. Designed with intention.</span><button type="button" data-top>Back to top ↑</button></div></div></footer>
 <div class="cursor-aura" aria-hidden="true"></div><div class="custom-cursor" aria-hidden="true"><span class="cursor-label"></span></div><div class="page-transition" id="pageTransition" aria-hidden="true"><div class="transition-bars">${Array.from({ length: 5 }, () => html`<span></span>`)}</div><span class="transition-title"></span></div>

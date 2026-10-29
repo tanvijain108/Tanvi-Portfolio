@@ -2,7 +2,7 @@
 
 Tanvi's server-rendered portfolio: separate Home, Work, About, Services and Contact pages, service detail pages, project stories, and a private contact inbox.
 
-- **Design:** warm off-white light mode and charcoal dark mode, with a blue accent, variable Archivo typography and Geist Mono labels. The header toggle saves the visitor's choice across every public page. New visitors start in light mode; the saved theme restores before the page renders.
+- **Design:** warm off-white light mode and charcoal dark mode, with a blue accent, consistent Archivo typography for headings, body text and labels. The header toggle saves the visitor's choice across every public page. New visitors start in light mode; the saved theme restores before the page renders.
 - **Content:** projects and site settings come from SQLite; biography, toolkit and service copy live in source files. Supported admin edits appear on the next page load.
 - **Admin panel:** `/admin` manages enquiries, projects and site settings, with retained testimonial and statistics fields for compatibility.
 - **Stack:** Node + Express, with SQLite through Node's built-in `node:sqlite`. There is no frontend build step and there are no native modules to compile.

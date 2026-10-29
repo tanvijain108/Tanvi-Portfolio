@@ -110,6 +110,61 @@
 }
 
 /* Imported project narrative and image styles can follow below. */
+.studio-site .next-service-arrow { flex: 0 0 auto; width: clamp(32px, 5vw, 64px); color: var(--accent); transition: transform .2s; }
+.studio-site .next-service-arrow svg { width: 100%; height: auto; }
+.studio-site .next-service > a:hover .next-service-arrow { transform: translate(3px, -3px); }
+@media (prefers-reduced-motion: reduce) {
+  .studio-site .next-service > a .next-service-arrow { transition: none; transform: none; }
+}
+/* A compact connected flow replaces the tall service process cards. */
+.studio-site .service-process { padding-block: 24px 64px; }
+.studio-site .service-process > .section-label { text-align: left; }
+.studio-site .service-process > .section-label::before { content: none; }
+.studio-site .process-flow {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  margin-top: 28px;
+}
+.studio-site .process-step { position: relative; min-width: 0; padding: 0 24px 16px 0; text-align: left; }
+.studio-site .process-choice { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; width: 100%; padding: 0; border: 0; background: transparent; color: var(--text); text-align: left; }
+.studio-site .process-choice:focus-visible { outline-offset: 8px; border-radius: 4px; }
+.studio-site .process-title { font-size: clamp(20px, 2vw, 28px); font-weight: 700; line-height: 1.2; letter-spacing: -.025em; transition: color .2s; }
+.studio-site .process-choice[aria-pressed='true'] .process-title { color: var(--accent); }
+.studio-site .process-choice[aria-pressed='true'] .process-node { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.studio-site .process-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 44px;
+  width: calc(100% - 56px);
+  height: 1px;
+  background: var(--line);
+}
+.studio-site .process-node {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--accent);
+  font-size: 12px;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.studio-site .process-step p { margin: 12px 0 0; max-width: 34ch; color: var(--muted); font-size: 14px; line-height: 1.65; }
+@media (max-width: 900px) {
+  .studio-site .process-flow { grid-auto-flow: row; grid-template-columns: 1fr; gap: 24px; }
+  .studio-site .process-step { padding: 0 0 0 50px; text-align: left; }
+  .studio-site .process-choice { align-items: flex-start; min-height: 32px; justify-content: center; }
+  .studio-site .process-node { position: absolute; left: 0; top: 0; }
+  .studio-site .process-step p { max-width: none; margin: 6px 0 0; }
+  .studio-site .process-step:not(:last-child)::after { top: 40px; bottom: -16px; left: 16px; right: auto; width: 1px; height: auto; }
+  .studio-site .service-process { padding-bottom: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .studio-site .process-node, .studio-site .process-title { transition: none; }
+}
 /* Keep body copy out of the large display-heading typography. */
 .studio-site .about-process-heading { display: grid; gap: 20px; font-size: 16px; line-height: 1.5; letter-spacing: normal; }
 .studio-site .about-process-heading .process-intro { max-width: 60ch; font-size: 17px; line-height: 1.7; letter-spacing: normal; }

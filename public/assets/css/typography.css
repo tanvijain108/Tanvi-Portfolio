@@ -1,0 +1,94 @@
+/* Shared typography for every page. Keep hierarchy in size, not font changes. */
+:root {
+  --font: 'Archivo', Arial, Helvetica, sans-serif;
+  --mono: var(--font);
+  --type-body: 1rem;
+  --type-small: .875rem;
+  --type-label: .75rem;
+  --type-section: clamp(32px, 4.5vw, 64px);
+  --type-card: clamp(24px, 2.8vw, 36px);
+}
+
+body { font-family: var(--font); font-size: var(--type-body); line-height: 1.6; }
+button, input, select, textarea { font-family: inherit; }
+.studio-site .arrow-icon { display: inline-block; width: 1em; height: 1em; min-width: 16px; min-height: 16px; flex-shrink: 0; vertical-align: middle; }
+.studio-site .next-service-arrow .arrow-icon { width: 100%; height: auto; }
+
+/* Keep static text consistent; animated glyphs and featured project titles
+   retain their original pointer-responsive width and weight axes. */
+body :not(:where(.kinetic-letter, [data-hero-letter], .footer-title, .footer-title-text, .featured-row-body h3)),
+body *::before, body *::after {
+  font-variation-settings: normal !important;
+  font-stretch: normal;
+}
+
+body .serif, body .italic, body .logo-script,
+.studio-site em, .studio-site .serif, .studio-site .italic {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+}
+body .editor .section-label { font-family: var(--font); font-style: normal; }
+
+.studio-site :is(h1, h2, h3, h4) {
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.025em;
+}
+.studio-site :is(.display-title, .home-name, .site-logo, .footer-title, .menu-links a, .next-project > a, .next-service > a, .transition-title) {
+  font-weight: 700;
+}
+/* Reserve room for the wider hover glyphs; never wrap the final letter. */
+.studio-site .home-name { container-type: inline-size; }
+.studio-site .home-name .name-line { white-space: nowrap; }
+.studio-site .home-name .name-line + .name-line {
+  font-size: min(1em, 16cqi);
+}
+.studio-site :is(.page-hero, .project-hero) .display-title {
+  font-size: clamp(44px, 8vw, 120px);
+  line-height: 1.05;
+  letter-spacing: -.025em;
+  overflow-wrap: anywhere;
+}
+.studio-site .simple-services-hero h1 {
+  letter-spacing: .015em;
+  word-spacing: .08em;
+  line-height: 1.15;
+}
+.studio-site .simple-services-hero > .page-eyebrow::before,
+.studio-site .service-detail-hero .page-eyebrow::before {
+  content: none;
+}
+.studio-site .simple-services-hero > .page-eyebrow,
+.studio-site .service-detail-hero .page-eyebrow {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.studio-site :is(.section-heading, .simple-tools-heading h2) {
+  font-size: var(--type-section);
+  line-height: 1.15;
+  letter-spacing: -.025em;
+}
+.studio-site :is(.simple-service h2, .service-row-copy h2, .service-row h3, .services-board .service-card-copy h3, .certification-feature-copy h3) {
+  font-size: var(--type-card);
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+.studio-site :is(.section-label, .page-eyebrow, .footer-eyebrow, .field label, .contact-option-label, .project-meta dt) {
+  font-size: var(--type-label);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: .04em;
+}
+.studio-site :is(.desktop-nav a, .header-cta, .pill-button, .outline-button, .text-link, .option-chip, .view-toggle button) {
+  font-size: var(--type-small);
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+.studio-site :is(.page-intro, .hero-detail, .project-summary, .process-intro, .about-process-heading .process-intro, .prose) {
+  font-size: var(--type-body);
+  line-height: 1.7;
+  letter-spacing: normal;
+}
+
