@@ -4,7 +4,7 @@
 
   var key = 'tanvi-studio-theme';
   var root = document.documentElement;
-  var theme = 'light';
+  var theme = 'dark';
   var button = null;
   var bound = false;
 
@@ -57,7 +57,7 @@
   else wire();
   window.addEventListener('storage', function (event) {
     if (event.key !== key && event.key !== null) return;
-    theme = valid(event.newValue) ? event.newValue : 'light';
+    theme = valid(event.newValue) ? event.newValue : 'dark';
     apply();
   });
 })();
