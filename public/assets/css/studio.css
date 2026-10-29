@@ -992,3 +992,31 @@ body.studio-site { margin: 0; background: var(--bg); color: var(--text); font-fa
 .studio-site .section-heading { font-size: clamp(38px, 5vw, 72px); }
 .studio-site .story-block h2 { font-size: clamp(30px, 3.2vw, 46px); }
 .studio-site .studio-marquee { border: 0; border-radius: 0; padding-inline: 0; }
+
+/* Quiet service list: one clear offering per row. */
+.studio-site .services-board.services-board { display: block; border-top: 1px solid var(--line); }
+.studio-site .services-board.services-board .service-card:nth-child(n) { display: block; min-height: 0; padding: 30px 64px 30px 56px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent !important; box-shadow: none; transform: none; transition: padding .25s ease; }
+.studio-site .services-board.services-board .board-visual,
+.studio-site .services-board.services-board .service-card-tags,
+.studio-site .services-board.services-board .service-best,
+.studio-site .services-board.services-board .service-explore { display: none; }
+.studio-site .services-board.services-board .service-card-top { inset: 34px 4px auto 0; }
+.studio-site .services-board.services-board .service-card-arrow { border: 0; width: 28px; height: 28px; background: transparent; }
+.studio-site .services-board.services-board .service-card-copy { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 36px; }
+.studio-site .services-board.services-board .service-card-copy h3 { max-width: none; margin: 0; font-size: clamp(21px, 2.2vw, 32px); line-height: 1.25; letter-spacing: -.025em; }
+.studio-site .services-board.services-board .service-card-copy p { max-width: 42ch; margin: 0; font-size: 14px; line-height: 1.6; }
+.studio-site .services-board.services-board .service-card:is(:hover, :focus-visible) { padding-left: 64px; }
+.studio-site .services-board.services-board .service-card:is(:hover, :focus-visible) h3 { color: var(--accent); }
+.studio-site .services-board.services-board .service-card:is(:hover, :focus-visible) .service-card-arrow { color: var(--accent); transform: translate(3px, -3px); }
+.studio-site .services-board.services-board .service-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 700px) {
+ .studio-site .services-board.services-board .service-card:nth-child(n) { padding: 24px 38px 24px 34px; }
+ .studio-site .services-board.services-board .service-card-top { top: 26px; }
+ .studio-site .services-board.services-board .service-card-copy { grid-template-columns: 1fr; gap: 8px; }
+ .studio-site .services-board.services-board .service-card-copy h3 { font-size: 22px; }
+ .studio-site .services-board.services-board .service-card:is(:hover, :focus-visible) { padding-left: 38px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .studio-site .services-board.services-board .service-card { transition: none; }
+ .studio-site .services-board.services-board .service-card:is(:hover, :focus-visible) .service-card-arrow { transform: none; }
+}
