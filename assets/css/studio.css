@@ -1017,3 +1017,5 @@ body.studio-site { margin: 0; background: var(--bg); color: var(--text); font-fa
  .studio-site .services-board.services-board .service-card { transition: none; }
  .studio-site .services-board.services-board .service-card:is(:hover, :focus-visible) .service-card-arrow { transform: none; }
 }
+
+.studio-site .hero-availability::before, .studio-site .hero-availability > i { display: none; }
